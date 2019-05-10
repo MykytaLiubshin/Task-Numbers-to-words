@@ -112,9 +112,11 @@ def wording(string):
     #Returns a string that represands the full sentance OK
     #Valudation Check below
     alpha = "1234567890+-*/= "
+    if not string:
+        return "Invalid input"
     for i in string:
         if i not in alpha:
-            return "Invalid Input"
+            return "Invalid input"
 
     string,s = splitting(string)
     if s != []:

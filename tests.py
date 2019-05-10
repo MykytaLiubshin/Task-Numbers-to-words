@@ -7,4 +7,9 @@ def test():
     assert "three plus seven equals ten" == wording("3 + 7 = 10")
     assert "one million divided by one thousand divided by one hundred equals ten" == wording("1000000 / 1000 / 100 = 10")
     assert "twelve plus nineteen minus thirteen divided by eighteen multyplied with three equals one" == wording("12 + 19 - 13 / 18 * 3 = 1")
+    assert "Invalid input" == wording("one plus two equals three")
+    assert "Invalid input" == wording("is this a text editor?")
+    assert "Invalid input" == wording(".")
+    assert "Invalid input" == wording("")
+
 test()
