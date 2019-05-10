@@ -1,6 +1,9 @@
-#DICT#
 def create_dict():
-    #This is a dictionary w/ all the needed words
+    """
+    create_dict(,/) takes nothing,
+    returns a dict object, that has a representing of all the fundamental numers
+    as a numeric value and as a word (sequence)
+    """
     numdic = {
                 "0":" zero ",
                 "1":" one ",
@@ -34,6 +37,11 @@ def create_dict():
     return numdic
     
 def create_dict_s():
+    """
+    create_dict_s(,/) takes nothing,
+    returns a dict object, that has a representing of all the needed symbols
+    as a symbolic value and as a word (sequence)
+    """
     sim = {
         # This is a dictionary w/ all the needed symbols
         "+":" plus ",

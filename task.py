@@ -2,7 +2,11 @@ from dicts import create_dict,create_dict_s
 from re import sub
 
 def splitting(string):
-    #splitting takes a string and returns it splitted by it's symbols and the set of symbols OK
+    """
+    splitting(string,/)
+    takes a string
+    returns it splitted by it's symbols and the set of symbols
+    """
     symbols,s = create_dict_s(),[]
     for i in string:
         if i in symbols:
@@ -11,7 +15,13 @@ def splitting(string):
     return string.split(' '),s
 
 def sym_to_word(string):
-    #symbol to word converter takes a list and replaces all of it's symbols w/ words OK
+
+    """
+    sym_to_word(string,/)
+    converter takes a list 
+    returns a string, that has all of it's
+    symbols replaced with words
+    """
     sym = create_dict_s()
     for i in range(len(string)):
         if string[i] in sym:
@@ -19,8 +29,13 @@ def sym_to_word(string):
     return string
 
 def check_spec(num):
-    #Check for spec takes a string, searches if there are fundamental numbers in it
-    #Fundamental number - these ones that in words are not made by a combination of others OK
+    """
+    check_spec(num,/) 
+    takes a string,
+    returns a string, with number combinations 10,1 - 10,9
+    replaced with their representing from 10 to 19
+    e.g. 10,7 -> 17
+    """
     h = [str(10+i) for i in range(10)]
     if len(num)>1:
         if num[-2]+num[-1] in h:
@@ -29,8 +44,10 @@ def check_spec(num):
     return num
 
 def zeroing(num,leng,numset):
-    #Zeroing takes a string, it's length and the standard numset
-    #Returns a readable (for the dictionary) list of strings  OK
+    """
+    zeroing(num,leng,numset,/) takes a string, it's length and the standard numset
+    Returns a list of strings, which is readable for the dictionary.
+    """
     i = 0
     while i<=len(num)-1:
         if num[i] != '0' and i != len(num)-1:
@@ -43,8 +60,10 @@ def zeroing(num,leng,numset):
     return num
 
 def num_to_word(num):
-    #Number to word converter takes a string as an arg
-    #Returns a string that represends a number in words OK
+    """
+    num_to_word(num,/) takes a string,
+    Returns a string that represends a number in words
+    """
     numset = create_dict()
 
     if num in numset:
@@ -59,9 +78,10 @@ def num_to_word(num):
 
 
 def assembler(num):
-    #Assembler "deassebles" the number if needed and "assebles" it back 
-    #Takes a string as an arg
-    #Returns the full number, that is readible for people OK
+    """
+    assembler(num,/)
+    Returns a number in words.
+    """
     if len(str(num))>3:
         if num == "1000000":
             return " one million "
@@ -79,8 +99,10 @@ def assembler(num):
         return(num_to_word(str(num)))
 
 def cleaner(string):
-    #Cleaner takes a string as an argument
-    #Returns a string, cleared from whitespaces and "zero"s OK
+    """
+    cleaner(string,/) takes a string
+    Returns a string, cleared from whitespaces and "zero"s
+    """
     i = 0
     while i <= len(string) - 1:
         if string[i] == '' or string[i] == " ":
@@ -88,11 +110,18 @@ def cleaner(string):
             i -= 1
         i += 1
     
+    if len(string)==0:
+        return ""
     if len(string[0])>6 and "zero" in string[0]:
         string = sub(r'zero', '', string[0])
 
     return string
+
 def fin_clean(ans):
+    """
+    fin_clean(ans,/) takes a final version of the output
+    returns it without whitespaces at the beginning and in the end
+    """
     if ans[0] == ' ':
         ans = ans[1:len(ans)]
     if ans[-1]==' ':
@@ -108,9 +137,10 @@ def fin_clean(ans):
     return ans
 
 def wording(string):
-    #Wording takes a string as an arg
-    #Returns a string that represands the full sentance OK
-    #Valudation Check below
+    """
+    wording(string,/) takes a string
+    Returns a string that represands the full sentance
+    """
     alpha = "1234567890+-*/= "
     if not string:
         return "Invalid input"
@@ -121,7 +151,7 @@ def wording(string):
     string,s = splitting(string)
     if s != []:
         s = cleaner(sym_to_word(s))
-
+    
     num = [assembler(i) for i in string]
     num = cleaner(num)
 
