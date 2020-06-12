@@ -19,4 +19,5 @@ def wording_test():
     assert "Invalid input" == wording(".")
     assert "Invalid input" == wording("")
 
-wording_test()
+if __name__ == "__main__":
+    wording_test()
